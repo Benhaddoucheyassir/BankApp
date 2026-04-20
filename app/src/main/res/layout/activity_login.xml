@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/marge_large"
+    android:background="@color/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_titre"
+        android:textSize="@dimen/texte_titre"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_sous_titre"
+        android:textSize="@dimen/texte_sous_titre"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="@dimen/marge_large" />
+    <EditText
+        android:id="@+id/etIdentifiant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/hint_identifiant"
+        android:layout_marginBottom="12dp"
+        />
+    <EditText
+        android:id="@+id/etMotDePasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_mot_de_passe"
+        android:inputType="textPassword"
+        android:layout_marginBottom="8dp"
+        />
+    <CheckBox
+        android:id="@+id/cbRappeler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cb_rappeler"
+        android:layout_marginBottom="8dp"
+        />
+    <TextView
+        android:id="@+id/tvErreur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error"
+        android:textSize="@dimen/texte_corps"
+        android:visibility="gone"
+        android:layout_marginBottom="8dp"
+        />
+    <Button
+        android:id="@+id/btnConnexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_connexion"
+        android:layout_marginTop="@dimen/marge_standard"
+        />
+
+</LinearLayout>
