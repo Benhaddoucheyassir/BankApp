@@ -2,6 +2,8 @@ package com.example.bankapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,19 @@ public class AccueilActivity extends AppCompatActivity {
         cardComptes.setOnClickListener(v -> afficherToast());
         cardStats.setOnClickListener(v -> afficherToast());
         cardParams.setOnClickListener(v -> afficherToast());
+
+        cardTransactions.setOnClickListener(v -> {
+            Intent intent = new Intent(this, TransactionsActivity.class);
+            intent.putExtra("nom_utilisateur", nom);
+            startActivity(intent);
+        });
+        cardComptes.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ComptesActivity.class);
+            intent.putExtra("nom_utilisateur", nom);
+            startActivity(intent);
+        });
+
+
     }
     private void afficherToast() {
         Toast.makeText(this, R.string.toast_a_venir, Toast.LENGTH_SHORT).show();

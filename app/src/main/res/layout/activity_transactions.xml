@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/background">
 
-    <!-- Zone 1 : le HeaderFragment réutilisable -->
+    <!-- Zone 1 : le HeaderFragment -->
     <fragment
         android:id="@+id/headerFragment"
         android:name="com.example.bankapp.HeaderFragment"
