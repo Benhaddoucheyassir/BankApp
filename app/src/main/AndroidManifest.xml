@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankApp">
         <activity
+            android:name=".TransactionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
