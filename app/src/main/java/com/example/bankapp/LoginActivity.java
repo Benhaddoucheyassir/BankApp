@@ -2,6 +2,7 @@ package com.example.bankapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String ID_VALIDE = "admin";
     private static final String MDP_VALIDE = "123456";
     private static final String TAG = "LoginActivity";
+    private static final String PREFS_NAME = "BankAppPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +35,18 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btnConnexion = findViewById(R.id.btnConnexion);
         btnConnexion.setOnClickListener(v -> tenterConnexion());
+
+
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean seRappeler = prefs.getBoolean("se_rappeler", false);
+        if (seRappeler) {
+            String idSauve = prefs.getString("identifiant", "");
+            etIdentifiant.setText(idSauve);
+            cbRappeler.setChecked(true);
+        }
+
+
     }
-
-
     private void tenterConnexion() {
         // Réinitialiser l'erreur précédente
         tvErreur.setVisibility(View.GONE);
@@ -63,6 +74,18 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             afficherErreur(getString(R.string.erreur_identifiants));
         }
+
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        if (cbRappeler.isChecked()) {
+            editor.putString("identifiant", id);
+            editor.putBoolean("se_rappeler", true);
+        } else {
+            editor.remove("identifiant");
+            editor.putBoolean("se_rappeler", false);
+        }
+        editor.apply();
+
     }
     private void afficherErreur(String message) {
         tvErreur.setText(message);

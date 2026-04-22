@@ -47,6 +47,7 @@ public class AccueilActivity extends AppCompatActivity {
 
 
     }
+
     private void afficherToast() {
         Toast.makeText(this, R.string.toast_a_venir, Toast.LENGTH_SHORT).show();
     }
