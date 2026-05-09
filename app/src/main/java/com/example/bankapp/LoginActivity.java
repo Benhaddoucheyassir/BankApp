@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
 public class LoginActivity extends AppCompatActivity {
     // Variables d'instance : utilisées dans plusieurs méthodes
     private EditText etIdentifiant;
