@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -51,6 +52,29 @@ public class VirementActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.CAMERA}, CODE_CAMERA);
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CODE_CAMERA && resultCode == RESULT_OK && data != null) {
+            // Récupérer la miniature
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            // Afficher dans l'ImageView
+            ivJustificatif.setImageBitmap(photo);
+            ivJustificatif.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CODE_CAMERA && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            ouvrirCamera();
+        }
+    }
+
+
 
 
     private void effectuerVirement() {

@@ -64,8 +64,7 @@ public class ServicesActivity extends AppCompatActivity {
     } // Added missing closing brace
 
     private void localiserAgence() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("geo:33.9716,-6.8498?q=Banque+Populaire"));
+        Intent intent = new Intent(this, AgencesActivity.class);
         startActivity(intent);
     }
     @Override
