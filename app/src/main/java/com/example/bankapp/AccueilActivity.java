@@ -29,10 +29,17 @@ public class AccueilActivity extends AppCompatActivity {
         }
         cardTransactions.setOnClickListener(v -> afficherToast());
         cardRecherche.setOnClickListener(v -> afficherToast());
-        cardVirement.setOnClickListener(v -> afficherToast());
+        cardVirement.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VirementActivity.class);
+            intent.putExtra("nom_utilisateur", nom);
+            startActivity(intent);
+        });
         cardComptes.setOnClickListener(v -> afficherToast());
         cardStats.setOnClickListener(v -> afficherToast());
-        cardParams.setOnClickListener(v -> afficherToast());
+        cardParams.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ServicesActivity.class);
+            startActivity(intent);
+        });
 
         cardTransactions.setOnClickListener(v -> {
             Intent intent = new Intent(this, TransactionsActivity.class);

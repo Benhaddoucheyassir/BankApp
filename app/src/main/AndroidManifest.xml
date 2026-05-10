@@ -23,6 +23,12 @@
             android:name=".ComptesActivity"
             android:exported="false" />
         <activity
+            android:name=".ServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VirementActivity"
+            android:exported="false" />
+        <activity
             android:name=".TransactionsActivity"
             android:exported="false" />
         <activity
