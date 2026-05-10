@@ -65,6 +65,21 @@
             android:layout_height="wrap_content"
             android:text="Effectuer le virement" />
 
+        <Button android:id="@+id/btnPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Photographier le justificatif"
+        android:layout_marginTop="12dp" />
+
+        <ImageView
+            android:id="@+id/ivJustificatif"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:layout_marginTop="12dp" />
+
+
     </LinearLayout>
 
 </LinearLayout>

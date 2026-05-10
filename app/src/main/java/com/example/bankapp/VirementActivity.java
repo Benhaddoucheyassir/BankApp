@@ -1,16 +1,27 @@
 package com.example.bankapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class VirementActivity extends AppCompatActivity {
     private EditText etBeneficiaire, etMontant, etMotif;
     private TextView tvErreur;
+    private static final int CODE_CAMERA = 200;
+    private ImageView ivJustificatif;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +35,23 @@ public class VirementActivity extends AppCompatActivity {
 
         Button btnVirement = findViewById(R.id.btnVirement);
         btnVirement.setOnClickListener(v -> effectuerVirement());
+
+        ivJustificatif = findViewById(R.id.ivJustificatif);
+        Button btnPhoto = findViewById(R.id.btnPhoto);
+        btnPhoto.setOnClickListener(v -> ouvrirCamera());
     }
+
+    private void ouvrirCamera() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, CODE_CAMERA);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, CODE_CAMERA);
+        }
+    }
+
 
     private void effectuerVirement() {
         tvErreur.setVisibility(View.GONE);
